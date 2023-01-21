@@ -53,7 +53,7 @@ function App() {
         <h1>Loading...</h1>
       </div>
     );
-  });
+  }, [location]);
 
   return <div>{showMapCOntainer}</div>;
 }
