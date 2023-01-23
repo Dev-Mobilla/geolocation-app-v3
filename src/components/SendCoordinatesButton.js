@@ -24,7 +24,7 @@ function SendCoordinatesButton({ latitude, longitude }) {
         const data = {
           Latitude: latitude,
           Longitude: longitude,
-          Radius: 20,
+          Radius: "Example",
         };
         axios
           .post(

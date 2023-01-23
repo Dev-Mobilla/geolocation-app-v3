@@ -57,7 +57,7 @@ function App() {
   }, [location]);
 
   return (
-    <div style={{ height: "90vh" }} className={"text-center"}>
+    <div style={{ height: "80vh" }} className={"text-center"}>
       {showMapCOntainer}
       <SendCoordinatesButton
         latitude={location.latitude}
