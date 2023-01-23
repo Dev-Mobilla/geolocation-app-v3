@@ -1,5 +1,6 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet"; // eslint-disable-next-line
 import { useEffect, useMemo, useState } from "react";
+import SendCoordinatesButton from "./components/SendCoordinatesButton";
 
 function App() {
   const [location, setLocation] = useState({
@@ -30,7 +31,7 @@ function App() {
           center={[location.latitude, location.longitude]}
           zoom={20}
           scrollWheelZoom={false}
-          style={{ height: "100vh", width: "100vw" }}
+          style={{ height: "100%", width: "100vw" }}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -41,7 +42,7 @@ function App() {
             draggable={true}
           >
             <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
+              latitude: {location.latitude}, longitude {location.longitude}
             </Popup>
           </Marker>
         </MapContainer>
@@ -55,7 +56,15 @@ function App() {
     );
   }, [location]);
 
-  return <div>{showMapCOntainer}</div>;
+  return (
+    <div style={{ height: "90vh" }} className={"text-center"}>
+      {showMapCOntainer}
+      <SendCoordinatesButton
+        latitude={location.latitude}
+        longitude={location.longitude}
+      />
+    </div>
+  );
 }
 
 export default App;
