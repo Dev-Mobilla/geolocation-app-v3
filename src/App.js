@@ -24,7 +24,7 @@ function App() {
     })();
   }, []);
 
-  const showMapCOntainer = useMemo(() => {
+  const showMapContainer = useMemo(() => {
     if (location.latitude && location.longitude) {
       return (
         <MapContainer
@@ -58,7 +58,7 @@ function App() {
 
   return (
     <div style={{ height: "80vh" }} className={"text-center"}>
-      {showMapCOntainer}
+      {showMapContainer}
       <SendCoordinatesButton
         latitude={location.latitude}
         longitude={location.longitude}
