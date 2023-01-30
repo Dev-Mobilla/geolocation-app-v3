@@ -57,34 +57,36 @@ function SendCoordinatesButton({ latitude, longitude }) {
               type="button"
               onClick={() => {
                 if (branchName && brachCode) {
-                  alert(
-                    "Coordinates:\n" +
-                      "Latitude: " +
-                      latitude +
-                      "\nLongitude: " +
-                      longitude
-                  );
-                  const data = {
-                    Latitude: latitude,
-                    Longitude: longitude,
-                    BranchName: branchName,
-                    BranchCode: brachCode,
-                  };
-
-                  axios
-                    .post(
-                      "https://sheet.best/api/sheets/4c7f0e06-db0a-42b1-b025-a0de38616728",
-                      data
+                  if (
+                    window.confirm(
+                      "Coordinates:\n" +
+                        "Latitude: " +
+                        latitude +
+                        "\nLongitude: " +
+                        longitude
                     )
-                    .then((respose) => {
-                      console.log(respose);
-                    });
+                  ) {
+                    const data = {
+                      Latitude: latitude,
+                      Longitude: longitude,
+                      Radius: "Example",
+                    };
+                    axios
+                      .post(
+                        "https://sheet.best/api/sheets/4c7f0e06-db0a-42b1-b025-a0de38616728",
+                        data
+                      )
+                      .then((respose) => {
+                        console.log(respose);
+                      });
+                    alert("Location Saved");
+                  }
                 } else {
-                  alert("Please fill the forms.");
+                  alert("Please fill all inputs.");
                 }
               }}
             >
-              Click
+              Save
             </button>
           </div>
         </div>
