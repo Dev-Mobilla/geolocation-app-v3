@@ -69,7 +69,8 @@ function SendCoordinatesButton({ latitude, longitude }) {
                     const data = {
                       Latitude: latitude,
                       Longitude: longitude,
-                      Radius: "Example",
+                      BranchName: branchName,
+                      BranchCode: brachCode,
                     };
                     axios
                       .post(
