@@ -1,5 +1,5 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet"; // eslint-disable-next-line
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react"; 
 import SendCoordinatesButton from "./components/SendCoordinatesButton";
 
 function App() {
@@ -7,6 +7,7 @@ function App() {
     latitude: null,
     longitude: null,
   });
+  const [permission, setPermission] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -20,6 +21,7 @@ function App() {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         });
+        setPermission(true);
       });
     })();
   }, []);
@@ -51,10 +53,15 @@ function App() {
 
     return (
       <div style={{ height: "100vh", width: "100vw" }}>
-        <h1>Loading...</h1>
+        <h1>Please turn on your location and restart the page.</h1>
+        {permission
+          ? setTimeout(() => {
+              window.location.reload();
+            }, 5000)
+          : null}
       </div>
     );
-  }, [location]);
+  }, [location]); 
 
   return (
     <div style={{ height: "80vh" }} className={"text-center"}>
