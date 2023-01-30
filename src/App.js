@@ -1,5 +1,5 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet"; // eslint-disable-next-line
-import { useEffect, useMemo, useState } from "react"; 
+import { useEffect, useMemo, useState } from "react";
 import SendCoordinatesButton from "./components/SendCoordinatesButton";
 
 function App() {
@@ -61,7 +61,8 @@ function App() {
           : null}
       </div>
     );
-  }, [location]); 
+  }, [location, permission]);
+  // eslint-disable-next-line
 
   return (
     <div style={{ height: "80vh" }} className={"text-center"}>
