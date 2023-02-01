@@ -36,6 +36,7 @@ function SendCoordinatesButton({ latitude, longitude }) {
                         console.log(respose);
                       });
                     alert("Location Saved");
+                    window.close();
                   }
                 }
               }}
