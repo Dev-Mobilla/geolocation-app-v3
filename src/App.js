@@ -54,15 +54,9 @@ function App() {
     return (
       <div style={{ height: "100vh", width: "100vw" }}>
         <h1>Please turn on your location and restart the page.</h1>
-        {permission
-          ? setTimeout(() => {
-              window.location.reload();
-            }, 5000)
-          : null}
       </div>
     );
   }, [location, permission]);
-  // eslint-disable-next-line
 
   return (
     <div style={{ height: "80vh" }} className={"text-center"}>
