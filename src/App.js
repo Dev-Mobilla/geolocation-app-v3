@@ -7,7 +7,6 @@ function App() {
     latitude: null,
     longitude: null,
   });
-  const [permission, setPermission] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -21,7 +20,6 @@ function App() {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         });
-        setPermission(true);
       });
     })();
   }, []);
@@ -56,7 +54,7 @@ function App() {
         <h1>Please turn on your location and restart the page.</h1>
       </div>
     );
-  }, [location, permission]);
+  }, [location]);
 
   return (
     <div style={{ height: "80vh" }} className={"text-center"}>
