@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import { Button } from "react-bootstrap";
 
 function SendCoordinatesButton({ latitude, longitude }) {
   return (
@@ -7,7 +8,7 @@ function SendCoordinatesButton({ latitude, longitude }) {
       <form className={"w-full max-w-lg"}>
         <div className={"flex flex-wrap -mx-3 mb-6"}>
           <div className={"w-full md:w-1/2 px-3"}>
-            <button
+            <Button
               className={
                 "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-6"
               }
@@ -17,10 +18,10 @@ function SendCoordinatesButton({ latitude, longitude }) {
                   if (
                     window.confirm(
                       "Coordinates:\n" +
-                        "Latitude: " +
-                        latitude +
-                        "\nLongitude: " +
-                        longitude
+                      "Latitude: " +
+                      latitude +
+                      "\nLongitude: " +
+                      longitude
                     )
                   ) {
                     const data = {
@@ -43,8 +44,8 @@ function SendCoordinatesButton({ latitude, longitude }) {
                 }
               }}
             >
-              Save
-            </button>
+              LOCATE
+            </Button>
           </div>
         </div>
       </form>
