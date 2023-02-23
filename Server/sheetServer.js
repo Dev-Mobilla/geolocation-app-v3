@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const Router = require('./router/router');
+const serverless = require('serverless-http');
 
 const PORT = process.env.PORT || 8000;
 
@@ -21,3 +22,6 @@ app.use('/', Router);
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}!`);
 })
+
+module.exports = app
+module.exports.handler = serverless(app)

@@ -24,6 +24,7 @@ function FormComponent(location) {
     const [show, setShow] = useState(false);
     const [loading, setLoading] = useState(false);
     const [alertNotif, setAlertNotif] = useState(false);
+    const [messageAlert, setMessageAlert] = useState();
     const [information, setInformation] = useState({});
 
     const handleClose = () => {
@@ -101,32 +102,31 @@ function FormComponent(location) {
         }
 
         if (form.checkValidity()) {
-            console.log('dsf');
             setValidated(true);
             setShow(true)
             setInformation(groupdata)
-            
+
         }
 
     };
     const postInformation = () => {
-        console.log(information);
         setLoading(true)
 
         axios.post('/postSheets', information).then(res => {
-            console.log(res);
             setTimeout(() => {
                 setLoading(false)
                 setShow(false)
                 setTimeout(() => {
                     setTimeout(() => {
                         window.location.reload()
-                    }, 1000);
+                    }, 800);
                     setAlertNotif(true)
-                }, 1500);
-            }, 2000);
+                    setMessageAlert('Submitted Successfully!')
+                }, 1000);
+            }, 1300);
         }).catch(e => {
             console.log(e);
+            setMessageAlert(e.message);
         })
     }
 
@@ -315,7 +315,8 @@ function FormComponent(location) {
                 </Button>
             </div>
             <br />
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose} backdrop="static"
+                keyboard={false}>
                 {/* <Modal.Header closeButton>
                     <Modal.Title>Submit Information?</Modal.Title>
                 </Modal.Header> */}
@@ -346,13 +347,14 @@ function FormComponent(location) {
                     </div>
                 </Modal.Footer>
             </Modal>
-            <Modal show={alertNotif} onClick={handleClose}>
+            <Modal show={alertNotif} onClick={handleClose} backdrop="static"
+                keyboard={false}>
                 {/* <Modal.Header closeButton>
                     <Modal.Title>Submit Information?</Modal.Title>
                 </Modal.Header> */}
                 <Modal.Body>
                     <div className="mt-1 text-center">
-                        <h5>Submitted Successfully!</h5>
+                        <h5>{messageAlert}</h5>
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
