@@ -29,7 +29,7 @@ function FormComponent(location) {
 
     const handleClose = () => {
         setShow(false)
-        setAlertNotif(false)
+//         setAlertNotif(false)
     };
 
     // const proplocation = () =>{
@@ -136,7 +136,7 @@ function FormComponent(location) {
             setMessageAlert(e.message);
         })
     }
-
+    
     const handleWindowRld = () => {
         setAlertNotif(false)
         setTimeout(() => {
