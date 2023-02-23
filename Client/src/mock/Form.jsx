@@ -29,7 +29,7 @@ function FormComponent(location) {
 
     const handleClose = () => {
         setShow(false)
-        setAlertNotif(false)
+//         setAlertNotif(false)
     };
 
     // const proplocation = () =>{
@@ -117,9 +117,6 @@ function FormComponent(location) {
                 setLoading(false)
                 setShow(false)
                 setTimeout(() => {
-                    setTimeout(() => {
-                        window.location.reload()
-                    }, 800);
                     setAlertNotif(true)
                     setMessageAlert('Submitted Successfully!')
                 }, 1000);
@@ -128,6 +125,13 @@ function FormComponent(location) {
             console.log(e);
             setMessageAlert(e.message);
         })
+    }
+    
+    const handleWindowRld = () => {
+        setAlertNotif(false)
+        setTimeout(() => {
+            window.location.reload()
+        }, 800);  
     }
 
     const Designation = [
@@ -347,7 +351,7 @@ function FormComponent(location) {
                     </div>
                 </Modal.Footer>
             </Modal>
-            <Modal show={alertNotif} onClick={handleClose} backdrop="static"
+            <Modal show={alertNotif} onClick={handleWindowRld} backdrop="static"
                 keyboard={false}>
                 {/* <Modal.Header closeButton>
                     <Modal.Title>Submit Information?</Modal.Title>
