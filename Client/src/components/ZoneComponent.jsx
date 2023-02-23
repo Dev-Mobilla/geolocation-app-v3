@@ -49,6 +49,7 @@ function ZoneComponent() {
     setBranches(ZONE[zone][regionIndex.index].areaSet[index].BRANCHES)
   };
   const selectBranch = (e) => {
+    console.log(e);
     let val = e.target.value;
     setBranch(val);
   };
@@ -164,7 +165,7 @@ function ZoneComponent() {
                 <option value="">default</option>
                 {branches?.map((el, key) => {
                   return (
-                    <option key={key} value={el.branchname}>
+                    <option key={key} value={el.branchname + '-' + el.branchcode}>
                       {el.branchname} - {el.branchcode}
                     </option>
                   );

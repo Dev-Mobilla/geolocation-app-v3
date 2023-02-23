@@ -87,6 +87,10 @@ function FormComponent(location) {
     const onFormSubmit = async (event) => {
         event.preventDefault();
         let form = event.target;
+        
+        let branch = event.target[8].value;
+
+        let branchSplit = branch.split("-");
 
         let groupdata = {
             firstname: event.target[0].value,
@@ -97,9 +101,12 @@ function FormComponent(location) {
             zone: event.target[5].value,
             region: event.target[6].value,
             area: event.target[7].value,
-            branch: event.target[8].value,
+            branchname: branchSplit[0],
+            branchcode: branchSplit[1],
             ...location
         }
+        
+        console.log(groupdata);
 
         if (form.checkValidity()) {
             setValidated(true);
@@ -117,9 +124,9 @@ function FormComponent(location) {
                 setLoading(false)
                 setShow(false)
                 setTimeout(() => {
-                    setTimeout(() => {
-                        window.location.reload()
-                    }, 800);
+                    // setTimeout(() => {
+                    //     window.location.reload()
+                    // }, 800);
                     setAlertNotif(true)
                     setMessageAlert('Submitted Successfully!')
                 }, 1000);
@@ -128,6 +135,13 @@ function FormComponent(location) {
             console.log(e);
             setMessageAlert(e.message);
         })
+    }
+
+    const handleWindowRld = () => {
+        setAlertNotif(false)
+        setTimeout(() => {
+            window.location.reload()
+        }, 800);  
     }
 
     const Designation = [
@@ -347,7 +361,7 @@ function FormComponent(location) {
                     </div>
                 </Modal.Footer>
             </Modal>
-            <Modal show={alertNotif} onClick={handleClose} backdrop="static"
+            <Modal show={alertNotif} onClick={handleWindowRld} backdrop="static"
                 keyboard={false}>
                 {/* <Modal.Header closeButton>
                     <Modal.Title>Submit Information?</Modal.Title>
