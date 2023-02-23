@@ -106,7 +106,7 @@ function FormComponent(location) {
             ...location
         }
         
-        console.log(groupdata);
+//         console.log(groupdata);
 
         if (form.checkValidity()) {
             setValidated(true);
