@@ -25,6 +25,7 @@ function FormComponent(location) {
     const [loading, setLoading] = useState(false);
     const [alertNotif, setAlertNotif] = useState(false);
     const [messageAlert, setMessageAlert] = useState();
+    const [noteAlert, setNoteAlert] = useState()
     const [information, setInformation] = useState({});
 
     const handleClose = () => {
@@ -105,8 +106,6 @@ function FormComponent(location) {
             branchcode: branchSplit[1],
             ...location
         }
-        
-        console.log(groupdata);
 
         if (form.checkValidity()) {
             setValidated(true);
@@ -129,6 +128,7 @@ function FormComponent(location) {
                     // }, 800);
                     setAlertNotif(true)
                     setMessageAlert('Submitted Successfully!')
+                    setNoteAlert('Only one (1) entry is needed for each branch.')
                 }, 1000);
             }, 1300);
         }).catch(e => {
@@ -168,7 +168,7 @@ function FormComponent(location) {
             <Row className="justify-content-md-center mb-3">
                 <Col sm={12} md={10}>
                     <h4>USER INFORMATION</h4>
-                    <p style={{ fontStyle: "italic" }}>
+                    <p style={{ fontStyle: "italic", fontSize: '12px' }}>
                         <span style={{ color: "red" }}>*</span> Fill out required fields
                     </p>
                 </Col>
@@ -334,7 +334,7 @@ function FormComponent(location) {
                 {/* <Modal.Header closeButton>
                     <Modal.Title>Submit Information?</Modal.Title>
                 </Modal.Header> */}
-                <Modal.Body>
+                <Modal.Body onClick={e => e.stopPropagation()}>
                     <div className="mt-1">
                         <h3>Submit Information?</h3>
                         <p className="mt-3">You are about to submit your information. <br /><br /> Click Save to proceed.</p>
@@ -366,9 +366,10 @@ function FormComponent(location) {
                 {/* <Modal.Header closeButton>
                     <Modal.Title>Submit Information?</Modal.Title>
                 </Modal.Header> */}
-                <Modal.Body>
+                <Modal.Body onClick={e => e.stopPropagation()}>
                     <div className="mt-1 text-center">
                         <h5>{messageAlert}</h5>
+                        <p>{noteAlert}</p>
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
