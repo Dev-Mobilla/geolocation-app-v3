@@ -5777,6 +5777,10 @@ const ZONES = {
               branchcode: "120305112",
             },
             {
+              branchname: "DAS LUTOPAN",
+              branchcode: "120305886",
+            },
+            {
               branchname: "PINAMUNGAJAN",
               branchcode: "120305115",
             },
@@ -6846,7 +6850,7 @@ const ZONES = {
       ],
     },
     {
-      region: "NEG.OCC. REGION",
+      region: "NEGROS OCCIDENTAL A REGION",
       areaSet: [
         {
           area: "AREA A",
@@ -8709,7 +8713,7 @@ const ZONES = {
       ],
     },
     {
-      region: "NEGROS OCCIDENTAL REGION",
+      region: "NEGROS OCCIDENTAL B REGION",
       areaSet: [
         {
           area: "AREA A",
