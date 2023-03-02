@@ -11072,6 +11072,10 @@ const ZONES = {
               branchcode: "132005983",
             },
             {
+              branchname: "LABANGAN",
+              branchcode: "132005906",
+            },
+            {
               branchname: "PULACAN",
               branchcode: "132005907",
             },
