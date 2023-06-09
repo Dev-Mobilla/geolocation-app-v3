@@ -128,6 +128,7 @@ function FormComponent(location) {
         setLoading(true)
 
         axios.post('/postToMihcm', information).then(res => {
+            console.log('RES', res);
             if (res.status === 200) {
 
                 if (res.data.code === 200) {
