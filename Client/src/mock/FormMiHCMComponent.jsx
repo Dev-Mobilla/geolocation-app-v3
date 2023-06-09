@@ -27,7 +27,7 @@ function FormComponent(location) {
     const [lastname, setLastname] = useState();
     const [reason, setReason] = useState();
     const [performed, setPerformed] = useState();
-    
+
     const [show, setShow] = useState(false);
     const [loading, setLoading] = useState(false);
     const [alertNotif, setAlertNotif] = useState(false);
@@ -128,21 +128,34 @@ function FormComponent(location) {
         setLoading(true)
 
         axios.post('/postToMihcm', information).then(res => {
+            if (res.status === 200) {
 
-            if (res.data.code === 200) {
-                setTimeout(() => {
-                    setLoading(false)
-                    setShow(false)
+                if (res.data.code === 200) {
                     setTimeout(() => {
-                        // setTimeout(() => {
-                        //     window.location.reload()
-                        // }, 800);
-                        setAlertNotif(true)
-                        setMessageAlert('Submitted Successfully!')
-                        // setNoteAlert('Only one (1) entry is needed for each branch.')
-                    }, 1000);
-                }, 1200);
-            }else{
+                        setLoading(false)
+                        setShow(false)
+                        setTimeout(() => {
+                            // setTimeout(() => {
+                            //     window.location.reload()
+                            // }, 800);
+                            setAlertNotif(true)
+                            setMessageAlert('Submitted Successfully!')
+                            // setNoteAlert('Only one (1) entry is needed for each branch.')
+                        }, 1000);
+                    }, 1200);
+                } else {
+                    setTimeout(() => {
+                        setLoading(false)
+                        setShow(false)
+                        setTimeout(() => {
+                            setAlertNotif(true)
+                            setMessageAlert('Submission Failed!');
+                            setNoteAlert(' Please contact admin or try again later.')
+                        }, 1000);
+                    }, 1200);
+
+                }
+            } else {
                 setTimeout(() => {
                     setLoading(false)
                     setShow(false)
@@ -152,10 +165,12 @@ function FormComponent(location) {
                         setNoteAlert(' Please contact admin or try again later.')
                     }, 1000);
                 }, 1200);
-                
             }
         }).catch(e => {
+            setLoading(false)
+            setShow(false)
             setMessageAlert(e.message);
+            setNoteAlert(' Please contact admin or try again later.')
         })
     }
 
