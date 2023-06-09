@@ -169,6 +169,7 @@ function FormComponent(location) {
         }).catch(e => {
             setLoading(false)
             setShow(false)
+            setAlertNotif(true)
             setMessageAlert(e.message);
             setNoteAlert(' Please contact admin or try again later.')
         })
