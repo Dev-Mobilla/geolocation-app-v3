@@ -249,7 +249,7 @@ function FormComponent(location) {
                                     <span style={{ color: "red" }}>*</span> First Name
                                 </Form.Label>
                                 <InputGroup hasValidation>
-                                    <Form.Control autoComplete='off' placeholder="First name" size='sm' maxLength={15}
+                                    <Form.Control autoComplete='off' placeholder="First name" size='sm' maxLength={30}
                                         minLength={3} name='firstname' required={true} style={{ backgroundColor: firstname ? 'whitesmoke' : '' }}
                                         onKeyDown={(e) => setFirstname(e.target.value)} />
                                     <Form.Control.Feedback type="invalid">
@@ -268,7 +268,7 @@ function FormComponent(location) {
                                         autoComplete="off"
                                         placeholder="Last name"
                                         size="sm"
-                                        maxLength={15}
+                                        maxLength={30}
                                         minLength={2}
                                         name="lastname"
                                         required={true}
